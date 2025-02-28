@@ -18,10 +18,17 @@ namespace Online_Exam_System.Bl
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Question>()
+                .HasOne(e => e.Exam)
+                .WithMany(q => q.TbQuestions)
+                .HasForeignKey(e => e.ExamId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
 
         public DbSet<ApplicationUser> Users { get; set; }
+        public DbSet<Exam> TbExams { get; set; }
+        public DbSet<Question> TbQuestions { get; set; }
 
     }
 }

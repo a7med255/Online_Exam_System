@@ -1,0 +1,39 @@
+﻿@model ExamDto
+
+
+
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Form elements </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Basic form layout </p>
+                    <form class="forms-sample" method="post" enctype="multipart/form-data"
+                        asp-area="admin" asp-controller="Home" asp-action="Add" role="form">
+                        <div class="form-group">
+                            <label for="address">Title</label>
+                            <input asp-for="Title" type="text" class="form-control" placeholder="Title">
+                            <span asp-validation-for="Title"></span>
+                        </div>
+
+                     
+
+                        <button type="submit" formmethod="post" class="btn btn-gradient-primary me-2">Save</button>
+                        <a asp-action="Index" class="btn btn-light">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

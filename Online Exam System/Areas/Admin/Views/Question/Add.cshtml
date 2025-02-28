@@ -1,0 +1,103 @@
+﻿@model QuestionDto
+
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description"> AddQuestion </p>
+            <form class="theme-form" method="post"
+                  asp-area="admin" asp-controller="Question" asp-action="Add" id="questionForm">
+                <input type="hidden" asp-for="ExamId" />
+
+                <div class="form-group">
+                    <label for="QuestionText">QuestionText</label>
+                    <input asp-for="QuestionText"
+                           type="text" class="form-control" id="fname" placeholder="QuestionText"
+                           required="">
+                    <span asp-validation-for="QuestionText"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Option1">Option1</label>
+                    <input asp-for="Option1"
+                           type="text" class="form-control  option-input" id="Option1" placeholder="Option1"
+                           required="">
+                    <span asp-validation-for="Option1"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Option2">Option2</label>
+                    <input asp-for="Option2"
+                           type="text" class="form-control  option-input" id="Option2" placeholder="Option2"
+                           required="">
+                    <span asp-validation-for="Option2"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Option3">Option3</label>
+                    <input asp-for="Option3"
+                           type="text" class="form-control option-input" id="Option3" placeholder="Option3" />
+                    <span asp-validation-for="Option3"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Option4">Option4</label>
+                    <input asp-for="Option4"
+                           type="text" class="form-control option-input" id="Option4" placeholder="Option4" />
+                    <span asp-validation-for="Option4"></span>
+                </div>
+                <div class="form-group">
+                    <label for="CorrectAnswer">CorrectAnswer</label>
+                    <select asp-for="CorrectAnswer"
+                           type="text" class="form-control" id="correctAnswerSelect" placeholder="CorrectAnswer"
+                           required="">
+                        <option value="">-- Select Correct Answer --</option>
+                    </select>
+                    <span asp-validation-for="CorrectAnswer"></span>
+                </div>
+               
+                <button type="submit" class="btn btn-gradient-primary me-2">SaveQuestion</button>
+                <a asp-action="List" asp-route-examid="@Model.ExamId"  class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".option-input").on("input", function () {
+                updateSelectOptions();
+            });
+
+            function updateSelectOptions() {
+                var select = $("#correctAnswerSelect");
+                select.empty(); 
+                select.append('<option value="">-- Select Correct Answer --</option>');
+
+                $(".option-input").each(function () {
+                    var optionValue = $(this).val().trim();
+                    if (optionValue !== "") {
+                        select.append('<option value="' + optionValue + '">' + optionValue + '</option>');
+                    }
+                });
+            }
+
+            $("#questionForm").on("submit", function (e) {
+                var option1 = $("#option1").val().trim();
+                var option2 = $("#option2").val().trim();
+                if (option1 === "" || option2 === "") {
+                    alert("Option 1 and Option 2 are required!");
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}

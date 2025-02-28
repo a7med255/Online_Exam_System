@@ -1,0 +1,87 @@
+﻿@model List<Question>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title"> Data table </h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Data table</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        Exam
+                    </h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <a asp-area="admin" asp-controller="Question" asp-action="Add" asp-route-examid="@ViewBag.ExamId" class="btn btn-success btn-fw">New</a>
+                            <table id="order-listing" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>QuestionText </th>
+                                        <th>Option1 </th>
+                                        <th>Option2 </th>
+                                        <th>Option3 </th>
+                                        <th>Option4 </th>
+                                        <th>CorrectAnswer </th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr style="margin:0px;padding:0px;">
+                                            <td class="col-md-8"> @item.QuestionText </td>
+                                            <td class="col-md-8"> @item.Option1 </td>
+                                            <td class="col-md-8"> @item.Option2 </td>
+                                            <td class="col-md-8"> @item?.Option3 </td>
+                                            <td class="col-md-8"> @item?.Option4 </td>
+                                            <td class="col-md-8"> @item.CorrectAnswer </td>
+
+                                            <td class="col-md-4" style="margin:0px;padding:0px;">
+                                                <a style="height:max-content"
+                                                   asp-area="admin" asp-controller="Question" asp-action="Edit" asp-route-id="@item.Id"
+                                                   class="btn btn-info btn-fw">Edit</a>
+
+                                                <a asp-area="admin" asp-controller="Question" asp-action="Delete" asp-route-id="@item.Id"
+                                                   class="btn btn-danger btn-fw"
+                                                   onclick="return confirm(" Are you sure");">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- main-panel ends -->
+</div>
+
+@section Scripts
+{
+    <!-- plugins:js -->
+    <script src="~/Admin/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/data-table.js"></script>
+    <!-- End custom js for this page -->
+}
+
+

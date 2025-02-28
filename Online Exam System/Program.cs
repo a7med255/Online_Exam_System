@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Online_Exam_System.Bl;
 using Online_Exam_System.Bl.Interfaces;
+using Online_Exam_System.Bl.Repositories;
 using Online_Exam_System.Models;
 using Online_Exam_System.Services;
 
@@ -21,6 +22,9 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
 
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IExam, ClsExams>();
+builder.Services.AddScoped<IQuestion, ClsQuestions>();
+
 
 
 
@@ -46,14 +50,29 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+    name: "admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}");
 
-app.MapControllerRoute(
+
+    endpoints.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapAreaControllerRoute(
-    name: "Areas",
-    areaName: "Admin",
-    pattern: "Admin/{controller=Home}/{action=Index}"
+
+
+
+
+}
 );
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.MapAreaControllerRoute(
+//    name: "Areas",
+//    areaName: "Admin",
+//    pattern: "Admin/{controller=Home}/{action=Index}"
+//);
 
 app.Run();

@@ -4,10 +4,10 @@ namespace Online_Exam_System.Bl.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        Task<T> GetSingleAsync(Expression<Func<T, bool>> filter);
-
-        Task<T> AddAsync(T Entity);
-
-        Task RemoveAsync(Expression<Func<T, bool>> filter);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<T> GetByIdAsync(int id);
+        Task<bool> AddAsync(T entity);
+        Task<bool> UpdateAsync(int id,T entity);
+        Task<bool> DeleteAsync(int id);
     }
 }

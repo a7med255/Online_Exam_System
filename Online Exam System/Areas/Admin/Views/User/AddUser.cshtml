@@ -15,8 +15,8 @@
     <div class="card">
         <div class="card-body">
             <p class="card-description"> AddUser </p>
-            <form class="theme-form" method="post" href="~/Admin/User/AddUser"
-            >
+            <form class="theme-form" method="post" 
+            asp-area="admin" asp-controller="User" asp-action="AddUser">
                 <div class="form-group">
                     <label for="FullName">Full Name</label>
                     <input asp-for="FullName"
