@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Online_Exam_System.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("admin")]
     public class HomeController : Controller
     {
