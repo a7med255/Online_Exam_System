@@ -15,6 +15,25 @@ namespace Online_Exam_System.Areas.Admin.Controllers
         {
             _userService = userService;
         }
+
+        public async Task<IActionResult> GetAllUser()
+        {
+            try
+            {
+                var users = await _userService.GetAllUsersAsync();
+
+                if (users == null || !users.Any())
+                {
+                    return View(new List<ApplicationUser>()); 
+                }
+
+                return View(users);
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
         public IActionResult AddUser()
         {
             return View(new User());
@@ -51,5 +70,29 @@ namespace Online_Exam_System.Areas.Admin.Controllers
 
             return View(user);
         }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                var isDeleted = await _userService.DeleteUserAsync(id);
+
+                if (isDeleted)
+                {
+                    TempData["SuccessMessage"] = "User deleted successfully.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "User not found or couldn't be deleted.";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "An error occurred while deleting the user.";
+            }
+
+            return RedirectToAction("GetAllUser");
+        }
+
     }
 }

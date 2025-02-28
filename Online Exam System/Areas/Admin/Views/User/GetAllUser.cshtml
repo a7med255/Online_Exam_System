@@ -1,4 +1,11 @@
-﻿@model List<Question>
+﻿@model List<ApplicationUser>
+
+
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
 
 @if (TempData["ErrorMessage"] != null)
 {
@@ -18,41 +25,28 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">
-                        Exam
-                    </h4>
+                    <h4 class="card-title">Data table</h4>
                     <div class="row">
                         <div class="col-12">
-                            <a asp-area="admin" asp-controller="Question" asp-action="Add" asp-route-examid="@ViewBag.ExamId" class="btn btn-success btn-fw">New</a>
+                            <a asp-area="admin" asp-controller="User" asp-action="AddUser" class="btn btn-success btn-fw">New</a>
                             <table id="order-listing" class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>QuestionText </th>
-                                        <th>Option1 </th>
-                                        <th>Option2 </th>
-                                        <th>Option3 </th>
-                                        <th>Option4 </th>
-                                        <th>CorrectAnswer </th>
+                                        <th>Full Name </th>
+                                        <th>Email </th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model)
+                                    @foreach (var user in Model)
                                     {
                                         <tr style="margin:0px;padding:0px;">
-                                            <td class="col-md-8"> @item.QuestionText </td>
-                                            <td class="col-md-8"> @item.Option1 </td>
-                                            <td class="col-md-8"> @item.Option2 </td>
-                                            <td class="col-md-8"> @item?.Option3 </td>
-                                            <td class="col-md-8"> @item?.Option4 </td>
-                                            <td class="col-md-8"> @item.CorrectAnswer </td>
+                                            <td class="col-md-8"> @user.FullName </td>
+                                            <td class="col-md-8"> @user.Email </td>
 
                                             <td class="col-md-4" style="margin:0px;padding:0px;">
-                                                <a style="height:max-content"
-                                                   asp-area="admin" asp-controller="Question" asp-action="Edit" asp-route-id="@item.Id"
-                                                   class="btn btn-info btn-fw">Edit</a>
 
-                                                <a asp-area="admin" asp-controller="Question" asp-action="Delete" asp-route-id="@item.Id"
+                                                <a asp-area="admin" asp-controller="User" asp-action="Delete" asp-route-id="@user.Id"
                                                    class="btn btn-danger btn-fw"
                                                    onclick="return confirm('Are you sure');">Delete</a>
                                             </td>

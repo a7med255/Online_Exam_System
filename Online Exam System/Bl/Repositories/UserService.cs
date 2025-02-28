@@ -3,6 +3,7 @@ using Online_Exam_System.Bl.Interfaces;
 using Online_Exam_System.Models;
 using Online_Exam_System.Bl;
 using Online_Exam_System.Dtos.Auth;
+using Microsoft.EntityFrameworkCore;
 
 namespace Online_Exam_System.Services
 {
@@ -21,6 +22,18 @@ namespace Online_Exam_System.Services
             this.context = context;
             _signInManager = signInManager;
         }
+        public async Task<List<ApplicationUser>> GetAllUsersAsync()
+        {
+            try
+            {
+                return await userManager.Users.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                return new List<ApplicationUser>();
+            }
+        }
+
         public async Task<AuthModel> CreateUserAsync(User model)
         {
             if (await userManager.FindByEmailAsync(model.Email) is not null)
@@ -61,7 +74,16 @@ namespace Online_Exam_System.Services
                 result = true
             };
         }
+        public async Task<bool> DeleteUserAsync(string userId)
+        {
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null)
+                return false;
 
+            var result = await userManager.DeleteAsync(user);
+
+            return result.Succeeded;
+        }
         public async Task<AuthModel> LoginAsync(Login login)
         {
             var authModel = new AuthModel();
