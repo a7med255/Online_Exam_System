@@ -1,0 +1,46 @@
+////////// SIDEBAR ////////
+$sidebar-width-lg: 260px;
+$sidebar-width-mini: 185px;
+$sidebar-width-icon: 70px;
+
+$sidebar-dark-bg: $card-bg-varient;
+$sidebar-dark-menu-color: $white;
+$sidebar-dark-menu-active-bg: darken($sidebar-dark-bg, 5%);
+$sidebar-dark-menu-active-color: darken($white, 30%);
+$sidebar-dark-menu-hover-bg: darken($sidebar-dark-bg, 5%);
+$sidebar-dark-menu-hover-color: $white;
+$sidebar-dark-submenu-color: $sidebar-dark-menu-color;
+$sidebar-dark-submenu-hover-bg: initial;
+$sidebar-dark-submenu-hover-color: darken($sidebar-dark-submenu-color, 30%);
+;
+$sidebar-dark-menu-icon-color: #bba8bff5;
+$sidebar-dark-menu-arrow-color: #9e9da0;
+
+$sidebar-menu-font-size: $default-font-size;
+$sidebar-menu-padding-y: 1.125rem;
+$sidebar-menu-padding-x: 2.25rem;
+
+$sidebar-submenu-font-size: .8125rem;
+$sidebar-submenu-item-padding: .75rem 2rem .75rem 2rem;
+
+$sidebar-icon-font-size: 1.125rem;
+$sidebar-arrow-font-size: .625rem;
+
+$sidebar-profile-bg: transparent;
+$sidebar-profile-padding: .75rem 1.625rem .75rem 1.188rem;
+
+$sidebar-mini-menu-padding: .8125rem 1rem .8125rem 1rem;
+
+$sidebar-icon-only-menu-padding: .5rem 1.625rem .5rem 1.188rem;
+$sidebar-icon-only-submenu-padding: 0 0 0 1.5rem;
+
+$rtl-sidebar-submenu-padding: 0 1.5rem 0 0;
+
+$icon-only-collapse-width: 190px;
+$icon-only-menu-bg-light: $sidebar-dark-menu-hover-bg;
+$icon-only-menu-bg-dark: $sidebar-dark-menu-hover-bg;
+
+
+///////// SIDEBAR ////////
+$pro-banner: #000;
+$blue-teal-gradient: linear-gradient(to right, #da8cff, #9a55ff) !important;

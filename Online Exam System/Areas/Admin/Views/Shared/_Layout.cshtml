@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Admin/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Admin/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/Admin/css/demo_3/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/Admin/images/favicon.png" />
+
+    @RenderSection("Styles", false)
+</head>
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_horizontal-navbar.html -->
+        <div class="horizontal-menu">
+            <nav class="navbar top-navbar col-lg-12 col-12 p-0">
+                <div class="container">
+                    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                        <a class="navbar-brand brand-logo" href="~/Home/Index"><img src="~/Admin/images/logo.svg" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo-mini" href="~/Home/Index"><img src="~/Admin/images/logo-mini.svg" alt="logo" /></a>
+                    </div>
+                    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                        <ul class="navbar-nav mr-lg-2">
+                            <li class="nav-item nav-search d-none d-lg-block">
+                                <div class="input-group">
+                                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                        <span class="input-group-text" id="search">
+                                            <i class="mdi mdi-magnify"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search projects" aria-label="search" aria-describedby="search">
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav navbar-nav-right">
+                            <li class="nav-item nav-profile dropdown">
+                                <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="nav-profile-img">
+                                        <img src="~/Admin/images/faces/face1.jpg" alt="image">
+                                        <span class="availability-status online"></span>
+                                    </div>
+                                    <div class="nav-profile-text">
+                                        <p class="text-black">David Greymaax</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="mdi mdi-cached me-2 text-success"></i> Activity Log
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="mdi mdi-logout me-2 text-primary"></i> Signout
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item d-none d-lg-flex full-screen-link">
+                                <a class="nav-link">
+                                    <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-email-outline"></i>
+                                    <span class="count-symbol bg-warning"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                                    <h6 class="p-3 mb-0">Messages</h6>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <img src="~/Admin/images/faces/face4.jpg" alt="image" class="profile-pic">
+                                        </div>
+                                        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
+                                            <p class="text-gray mb-0"> 1 Minutes ago </p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <img src="~/Admin/images/faces/face2.jpg" alt="image" class="profile-pic">
+                                        </div>
+                                        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
+                                            <p class="text-gray mb-0"> 15 Minutes ago </p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <img src="~/Admin/images/faces/face3.jpg" alt="image" class="profile-pic">
+                                        </div>
+                                        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
+                                            <p class="text-gray mb-0"> 18 Minutes ago </p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="p-3 mb-0 text-center">4 new messages</h6>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                                    <i class="mdi mdi-bell-outline"></i>
+                                    <span class="count-symbol bg-danger"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                                    <h6 class="p-3 mb-0">Notifications</h6>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <div class="preview-icon bg-success">
+                                                <i class="mdi mdi-calendar"></i>
+                                            </div>
+                                        </div>
+                                        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
+                                            <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <div class="preview-icon bg-warning">
+                                                <i class="mdi mdi-cog"></i>
+                                            </div>
+                                        </div>
+                                        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
+                                            <p class="text-gray ellipsis mb-0"> Update dashboard </p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <div class="preview-icon bg-info">
+                                                <i class="mdi mdi-link-variant"></i>
+                                            </div>
+                                        </div>
+                                        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
+                                            <p class="text-gray ellipsis mb-0"> New admin wow! </p>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-logout d-none d-lg-flex">
+                                <a class="nav-link" href="#">
+                                    <i class="mdi mdi-power"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-settings d-none d-lg-flex">
+                                <a class="nav-link" href="#">
+                                    <i class="mdi mdi-format-line-spacing"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
+                            <span class="mdi mdi-menu"></span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <nav class="bottom-navbar">
+                <div class="container">
+                    <ul class="nav page-navigation">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/Home">
+                                <i class="mdi mdi-home menu-icon"></i>
+                                <span class="menu-title">Dashboard</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="/admin/Categories/List" class="nav-link">
+                                <i class="mdi mdi-clipboard-text menu-icon"></i>
+                                <span class="menu-title">Basic Data</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="/admin/User/AddUser">Users</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/admin/Items/List">Items</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+                        <li class="nav-item">
+                            <a href="http://www.bootstrapdash.com/demo/purple/jquery/documentation/documentation.html" " class="nav-link" target="_blank">
+                                <i class="mdi mdi-file-document-box menu-icon"></i>
+                                <span class="menu-title">Documentation</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <div class="main-panel">
+
+                            @RenderBody()
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="container">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
+                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/Admin/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/vendors/chart.js/Chart.min.js"></script>
+    <script src="~/Admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/Admin/js/off-canvas.js"></script>
+    <script src="~/Admin/js/hoverable-collapse.js"></script>
+    <script src="~/Admin/js/misc.js"></script>
+    <script src="~/Admin/js/settings.js"></script>
+    <script src="~/Admin/js/todolist.js"></script>
+    <script src="~/Admin/js/jquery.cookie.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <!-- End custom js for this page -->
+    @RenderSection("Scripts", false);
+</body>
+</html>
