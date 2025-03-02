@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Online_Exam_System.Bl.Interfaces;
 using Online_Exam_System.Bl.Repositories;
 using Online_Exam_System.Dtos.Exam;
@@ -7,6 +8,7 @@ using Online_Exam_System.Models;
 
 namespace Online_Exam_System.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("admin")]
     public class QuestionController : Controller
     {

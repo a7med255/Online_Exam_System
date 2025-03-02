@@ -65,8 +65,16 @@ namespace Online_Exam_System.Services
 
             }
 
-            await userManager.AddToRoleAsync(user, "User");
+            string roleName = "User";
+            if (!await _roleManager.RoleExistsAsync(roleName))//Add Role
+            {
+                await _roleManager.CreateAsync(new IdentityRole(roleName));
+            }
 
+            if (!await userManager.IsInRoleAsync(user, roleName))
+            {
+                await userManager.AddToRoleAsync(user, roleName);
+            }
 
             return new AuthModel
             {
@@ -96,7 +104,7 @@ namespace Online_Exam_System.Services
                 return authModel;
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user, login.Password, isPersistent: false, lockoutOnFailure: true);
+            var result = await _signInManager.PasswordSignInAsync(user, login.Password, isPersistent: true, lockoutOnFailure: true);
 
             if (!result.Succeeded)
             {

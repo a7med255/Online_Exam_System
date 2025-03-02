@@ -1,0 +1,96 @@
+﻿@model ExamWithQuestionsDto
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center fw-bold">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger text-center fw-bold">@TempData["ErrorMessage"]</div>
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg p-4">
+        <div class="card-body">
+            <h2 class="text-center text-primary fw-bold">@Model.ExamTitle</h2>
+            <hr>
+            <form class="theme-form" method="post" asp-controller="Home" asp-action="SubmitExam" id="questionForm">
+                <input type="hidden" name="ExamId" value="@Model.ExamId" />
+
+                <div class="container">
+                    @for (int i = 0; i < Model.Questions.Count; i++)
+                    {
+                        var question = Model.Questions[i];
+
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary fw-bold">📌 السؤال @(i + 1)</h5>
+                                <p class="card-text fs-5 text-dark">@question.QuestionText</p>
+                                <input type="hidden" name="Answers[@i].QuestionId" value="@question.Id" />
+
+                                <ul class="list-group">
+                                    <li class="list-group-item list-hover">
+                                        <input class="form-check-input me-2" type="radio" name="Answers[@i].UserAnswerChoise" value="@question.Option1" required>
+                                        <label class="fw-bold">@question.Option1</label>
+                                    </li>
+                                    <li class="list-group-item list-hover">
+                                        <input class="form-check-input me-2" type="radio" name="Answers[@i].UserAnswerChoise" value="@question.Option2" required>
+                                        <label class="fw-bold">@question.Option2</label>
+                                    </li>
+                                    @if (!string.IsNullOrEmpty(question.Option3))
+                                    {
+                                        <li class="list-group-item list-hover">
+                                            <input class="form-check-input me-2" type="radio" name="Answers[@i].UserAnswerChoise" value="@question.Option3">
+                                            <label class="fw-bold">@question.Option3</label>
+                                        </li>
+                                    }
+                                    @if (!string.IsNullOrEmpty(question.Option4))
+                                    {
+                                        <li class="list-group-item list-hover">
+                                            <input class="form-check-input me-2" type="radio" name="Answers[@i].UserAnswerChoise" value="@question.Option4">
+                                            <label class="fw-bold">@question.Option4</label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg px-5 py-2 shadow-lg fw-bold">
+                        📝 إرسال الامتحان
+                    </button>
+                </div>
+            </form>
+            <div id="resultContainer" class="mt-4"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/exam.js"></script>
+}
+
+<style>
+    .list-hover:hover {
+        background-color: #f0f8ff;
+        transition: 0.3s;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(45deg, #007bff, #00d4ff);
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #0056b3, #00aaff);
+        }
+</style>

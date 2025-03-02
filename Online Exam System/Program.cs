@@ -24,6 +24,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IExam, ClsExams>();
 builder.Services.AddScoped<IQuestion, ClsQuestions>();
+builder.Services.AddScoped<IUserAnswer, ClsUserAnswer>();
 
 
 
@@ -48,6 +49,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
@@ -59,7 +61,7 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=User}/{action=Login}/{id?}");
 
 
 

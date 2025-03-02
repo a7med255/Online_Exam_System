@@ -6,14 +6,16 @@ using Online_Exam_System.Models;
 
 namespace Online_Exam_System.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("admin")]
     public class HomeController : Controller
     {
         private readonly IExam ClsExams;
-        public HomeController(IExam exam)
+        private readonly IQuestion ClsQuestions;
+        public HomeController(IExam exam,IQuestion question)
         {
             ClsExams = exam;
+            ClsQuestions = question;
         }
         public async Task<IActionResult> Index()//GetAllExams
         {

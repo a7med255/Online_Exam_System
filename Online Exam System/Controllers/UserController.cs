@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Online_Exam_System.Bl.Interfaces;
 using Online_Exam_System.Dtos.Auth;
@@ -41,6 +42,7 @@ namespace Online_Exam_System.Controllers
             }
             return View(new Login());
         }
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _userService.LogoutAsync();

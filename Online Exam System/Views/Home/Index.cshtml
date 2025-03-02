@@ -1,8 +1,64 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-<a href="~/Admin/Home/Index">Admin</a>
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+﻿@model List<Exam>
+
+<div class="d-flex justify-content-between align-items-center p-3 bg-light shadow-sm">
+    <div>
+        <a href="~/Admin/Home/Index" class="btn btn-dark btn-sm">🔧 Admin</a>
+    </div>
+    <div>
+        <h1 class="display-6 fw-bold text-primary">📚 Exams System</h1>
+    </div>
+    <div>
+        <a href="~/User/Logout" class="btn btn-danger btn-sm">🚪 Logout</a>
+    </div>
 </div>
+
+<div class="container py-5">
+    <h1 class="text-center mb-4 text-info fw-bold">📝 Available Exams</h1>
+    <hr class="mb-4">
+    <div class="row g-4">
+        @foreach (var list in Model)
+        {
+            <div class="col-md-4">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold text-dark">@list.Title</h5>
+                        <a onclick="showInstructions()"
+                           asp-controller="Home" asp-action="StartExam" asp-route-examId="@list.Id"
+                           class="btn btn-info btn-lg mt-3 shadow-sm text-white fw-bold rounded-3">🎯 Start Exam</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+            function showInstructions() {
+        alert("⚠️ Exam Instructions:\n\n1️⃣ Read all questions carefully.\n2️⃣ Do not close the page during the exam.\n3️⃣ Make sure to submit your answers before the time ends.");
+        }
+    </script>
+}
+
+<style>
+    .btn-info {
+        background: linear-gradient(45deg, #17a2b8, #0d6efd);
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-info:hover {
+            background: linear-gradient(45deg, #0d6efd, #17a2b8);
+        }
+
+    .card {
+        border-radius: 12px;
+        transition: 0.3s;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+</style>

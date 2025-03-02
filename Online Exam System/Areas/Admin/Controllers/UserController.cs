@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Online_Exam_System.Bl.Interfaces;
 using Online_Exam_System.Dtos.Auth;
@@ -6,7 +7,7 @@ using Online_Exam_System.Models;
 
 namespace Online_Exam_System.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("admin")]
     public class UserController : Controller
     {

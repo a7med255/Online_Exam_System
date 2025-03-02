@@ -35,5 +35,7 @@ namespace Online_Exam_System.Models
         [Required]
         [StringLength(255)]
         public string CorrectAnswer { get; set; }
+
+        public virtual ICollection<UserAnswer> UserAnswers { get; set; } = new List<UserAnswer>();
     }
 }

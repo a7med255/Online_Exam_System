@@ -22,6 +22,7 @@ namespace Online_Exam_System.Models
         public string? UpdatedBy { get; set; }
 
         public bool CurrentState { get; set; }
-        public ICollection<Question> TbQuestions { get; set; }
+        public ICollection<Question> TbQuestions { get; set; } = new List<Question>();
+        public virtual ICollection<UserExam> UserExams { get; set; } = new List<UserExam>();
     }
 }

@@ -7,5 +7,8 @@ namespace Online_Exam_System.Models
     {
         [Required]
         public string FullName { get; set; }
+
+        public virtual ICollection<UserExam> UserExams { get; set; } = new List<UserExam>();
+        public virtual ICollection<UserAnswer> UserAnswers { get; set; } = new List<UserAnswer>();
     }
 }
