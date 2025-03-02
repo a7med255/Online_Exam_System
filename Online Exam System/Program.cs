@@ -25,6 +25,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IExam, ClsExams>();
 builder.Services.AddScoped<IQuestion, ClsQuestions>();
 builder.Services.AddScoped<IUserAnswer, ClsUserAnswer>();
+builder.Services.AddScoped<IUserExam, ClsUserExams>();
 
 
 

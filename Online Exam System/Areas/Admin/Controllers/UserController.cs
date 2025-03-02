@@ -71,7 +71,12 @@ namespace Online_Exam_System.Areas.Admin.Controllers
 
             return View(user);
         }
-
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _userService.LogoutAsync();
+            return RedirectToAction("Login", "User");
+        }
         public async Task<IActionResult> Delete(string id)
         {
             try

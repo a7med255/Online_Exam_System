@@ -1,4 +1,4 @@
-﻿@model List<ApplicationUser>
+﻿@model List<UserExam>
 
 
 
@@ -25,34 +25,27 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Data table</h4>
                     <div class="row">
                         <div class="col-12">
-                            <a asp-area="admin" asp-controller="User" asp-action="AddUser" class="btn btn-success btn-fw">New</a>
                             <table id="order-listing" class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>Full Name </th>
-                                        <th>Email </th>
-                                        <th>Actions</th>
+                                        <th>Exam Name </th>
+                                        <th>Score </th>
+                                        <th>Status </th>
+                                        <th>Iscompleted </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var user in Model)
                                     {
                                         <tr style="margin:0px;padding:0px;">
-                                            <td class="col-md-8"> @user.FullName </td>
-                                            <td class="col-md-8"> @user.Email </td>
-
-                                            <td class="col-md-4" style="margin:0px;padding:0px;">
-                                                <a style="height:max-content"
-                                                   asp-area="admin" asp-controller="UserExam" asp-action="GetAll" asp-route-userId="@user.Id"
-                                                   class="btn btn-info btn-fw">UserExams</a>
-
-                                                <a asp-area="admin" asp-controller="User" asp-action="Delete" asp-route-id="@user.Id"
-                                                   class="btn btn-danger btn-fw"
-                                                   onclick="return confirm('Are you sure');">Delete</a>
-                                            </td>
+                                            <td class="col-md-8"> @user.User.FullName </td>
+                                            <td class="col-md-8"> @user.Exam.Title </td>
+                                            <td class="col-md-8"> @user.Score </td>
+                                            <td class="col-md-8"> @user.Passed </td>
+                                            <td class="col-md-8"> @user.IsCompleted </td>
                                         </tr>
                                     }
                                 </tbody>
@@ -66,7 +59,6 @@
     </div>
     <!-- main-panel ends -->
 </div>
-
 @section Scripts
 {
     <!-- plugins:js -->
