@@ -1,0 +1,53 @@
+﻿@model Login
+
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<div class="col-md-6 mx-auto">
+    <div class="card shadow-lg rounded-lg border-0">
+        <div class="card-body p-4">
+            <h3 class="text-center text-primary fw-bold">🔐 Login</h3>
+            <p class="text-center text-muted">Enter your credentials to access your account</p>
+
+            <form class="theme-form" method="post" asp-controller="User" asp-action="Login">
+                <div class="form-group mb-3">
+                    <label for="email" class="fw-bold">📧 Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                        <input asp-for="Email"
+                               type="email"
+                               class="form-control"
+                               id="email"
+                               placeholder="Enter your email"
+                               required="">
+                    </div>
+                    <span class="text-danger small" asp-validation-for="Email"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="password" class="fw-bold">🔑 Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                        <input asp-for="Password"
+                               type="password"
+                               class="form-control"
+                               id="password"
+                               placeholder="Enter your password"
+                               required="">
+                    </div>
+                    <span class="text-danger small" asp-validation-for="Password"></span>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-gradient-primary fw-bold shadow">
+                        🔓 Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

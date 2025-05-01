@@ -9,18 +9,18 @@ using Online_Exam_System.Bl;
 
 #nullable disable
 
-namespace Online_Exam_System.Migrations
+namespace OnlineExam.DAL.Migrations
 {
     [DbContext(typeof(ExamContext))]
-    [Migration("20250302004131_Data")]
-    partial class Data
+    [Migration("20250501194414_data")]
+    partial class data
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("ProductVersion", "8.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -460,13 +460,13 @@ namespace Online_Exam_System.Migrations
                     b.HasOne("Online_Exam_System.Models.Question", "Question")
                         .WithMany("UserAnswers")
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Online_Exam_System.Models.UserExam", "UserExam")
                         .WithMany("UserAnswers")
                         .HasForeignKey("UserExamId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Online_Exam_System.Models.ApplicationUser", "User")
@@ -487,13 +487,13 @@ namespace Online_Exam_System.Migrations
                     b.HasOne("Online_Exam_System.Models.Exam", "Exam")
                         .WithMany("UserExams")
                         .HasForeignKey("ExamId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Online_Exam_System.Models.ApplicationUser", "User")
                         .WithMany("UserExams")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Exam");

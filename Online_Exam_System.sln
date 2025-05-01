@@ -5,6 +5,12 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online_Exam_System", "Online Exam System\Online_Exam_System.csproj", "{380DC8B1-24DE-4D0B-9D7F-BA14DF4D4D2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineExam.BLL", "OnlineExam.BLL\OnlineExam.BLL.csproj", "{A71678B6-A895-44FB-82EE-54DB11C2DCE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineExam.DAL", "OnlineExam.DAL\OnlineExam.DAL.csproj", "{E840706E-DB42-4E99-8FF5-65AE4EB54C3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineExam.Domain", "OnlineExam.Domain\OnlineExam.Domain.csproj", "{B7E805D2-20F5-4389-8301-8B803C226583}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{380DC8B1-24DE-4D0B-9D7F-BA14DF4D4D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{380DC8B1-24DE-4D0B-9D7F-BA14DF4D4D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{380DC8B1-24DE-4D0B-9D7F-BA14DF4D4D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A71678B6-A895-44FB-82EE-54DB11C2DCE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71678B6-A895-44FB-82EE-54DB11C2DCE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71678B6-A895-44FB-82EE-54DB11C2DCE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71678B6-A895-44FB-82EE-54DB11C2DCE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E840706E-DB42-4E99-8FF5-65AE4EB54C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E840706E-DB42-4E99-8FF5-65AE4EB54C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E840706E-DB42-4E99-8FF5-65AE4EB54C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E840706E-DB42-4E99-8FF5-65AE4EB54C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7E805D2-20F5-4389-8301-8B803C226583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7E805D2-20F5-4389-8301-8B803C226583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7E805D2-20F5-4389-8301-8B803C226583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7E805D2-20F5-4389-8301-8B803C226583}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

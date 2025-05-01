@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Online_Exam_System.Dtos.Auth;
 using Online_Exam_System.Models;
 using System.IdentityModel.Tokens.Jwt;

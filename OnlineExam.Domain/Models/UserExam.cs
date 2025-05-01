@@ -1,5 +1,4 @@
-﻿using Online_Exam_System.Dtos.Auth;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace Online_Exam_System.Models
